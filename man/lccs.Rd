@@ -2,16 +2,18 @@
 % Please edit documentation in R/lcss.R
 \name{lccs}
 \alias{lccs}
-\title{}
+\title{...}
 \usage{
-lccs(url = NULL)
+lccs(url = NULL, token = NULL)
 }
 \arguments{
 \item{url}{...}
+
+\item{token}{...}
 }
 \value{
 a class ...
 }
 \description{
-
+...
 }
