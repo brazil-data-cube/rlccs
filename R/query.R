@@ -5,11 +5,16 @@
 #' @param params ...
 #' @param subclass ...
 #' @param query_type ...
+#' @param encode ...
 #'
 #' @return a class ...
 #'
 #' @export
-RLCCSQuery <- function(base_url, params = list(), subclass, query_type = "key") {
+RLCCSQuery <- function(base_url,
+                       params = list(),
+                       subclass,
+                       query_type = "key",
+                       encode = NULL) {
 
   structure(
     list(base_url = base_url,
@@ -17,7 +22,7 @@ RLCCSQuery <- function(base_url, params = list(), subclass, query_type = "key") 
          params = params,
          query_type = query_type,
          verb = "GET",
-         encode = NULL),
+         encode = encode),
     class = c(subclass, "RLCCSQuery"))
 }
 

@@ -11,11 +11,14 @@
 style_formats <- function(q, style_format_id = NULL, params_list = list()) {
 
   # check q parameter
-  check_subclass(q, "lccs")
+  check_subclass(q, c("lccs", "classification_systems_id"))
+
+  subclass <- "style_formats"
+  if (subclass(q) == "classification_systems_id")
+    subclass <- "style_formats_classification"
 
   params <- list()
 
-  subclass <- "style_formats"
   if (!is.null(style_format_id)) {
 
     if (length(style_format_id) != 1)
@@ -32,9 +35,37 @@ style_formats <- function(q, style_format_id = NULL, params_list = list()) {
 }
 
 #' @export
+endpoint.style_formats_classification <- function(q) {
+  return(paste("/classification_systems",
+               q$params[["system_id"]],
+               "style_formats",
+               sep = "/"))
+}
+
+
+#' @export
+before_request.style_formats_classification <- function(q) {
+  check_query_verb(q, verbs = c("GET"))
+
+  q <- omit_query_params(q, names = c("system_id"))
+
+  return(q)
+}
+
+#' @export
+after_response.style_formats_classification <- function(q, res) {
+  content <- content_response(res, c("200", "400", "404", "500"),
+                              "application/json")
+
+  RLCCSDocument(content = content, q = q, subclass = "StyleFormats")
+}
+
+
+#' @export
 endpoint.style_formats <- function(q) {
   return("/style_formats")
 }
+
 
 #' @export
 before_request.style_formats <- function(q) {
