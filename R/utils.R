@@ -25,12 +25,11 @@
 #' @return A \code{list} of collections.
 #'
 #' @noRd
-.parse_collections <- function(collections) {
+.parse_style_file <- function(style_file) {
+  if (!file.exists(style_file))
+    .error("The %s do not exists", style_file)
 
-  if (length(collections) == 1 && !is.list(collections))
-    collections <- list(collections)
-
-  return(collections)
+  return(style_file)
 }
 
 #' @title Utility functions

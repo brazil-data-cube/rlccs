@@ -4,7 +4,13 @@
 \alias{RLCCSQuery}
 \title{...}
 \usage{
-RLCCSQuery(base_url, params = list(), subclass)
+RLCCSQuery(
+  base_url,
+  params = list(),
+  subclass,
+  query_type = "key",
+  encode = NULL
+)
 }
 \arguments{
 \item{base_url}{...}
@@ -12,6 +18,10 @@ RLCCSQuery(base_url, params = list(), subclass)
 \item{params}{...}
 
 \item{subclass}{...}
+
+\item{query_type}{...}
+
+\item{encode}{...}
 }
 \value{
 a class ...

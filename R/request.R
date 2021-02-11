@@ -77,7 +77,9 @@ post_request <- function(q, ..., encode = c("json", "multipart", "form")) {
 
   # stamp verb
   q$verb <- "POST"
-  q$encode <- encode
+
+  if (is.null(q$encode))
+    q$encode <- encode
 
   # set endpoint
   q$endpoint <- endpoint(q)
@@ -87,6 +89,9 @@ post_request <- function(q, ..., encode = c("json", "multipart", "form")) {
 
   # process omitted params
   q <- .do_omit_query_params(q)
+
+  if (q$query_type == "list")
+    q$params <- list(q$params)
 
   tryCatch({
     res <- httr::POST(url = .make_url(q$base_url, endpoint = q$endpoint), ...,
@@ -121,7 +126,9 @@ put_request <- function(q, ..., encode = c("json", "multipart", "form")) {
 
   # stamp verb
   q$verb <- "PUT"
-  q$encode <- encode
+
+  if (is.null(q$encode))
+    q$encode <- encode
 
   # set endpoint
   q$endpoint <- endpoint(q)
@@ -131,6 +138,9 @@ put_request <- function(q, ..., encode = c("json", "multipart", "form")) {
 
   # process omitted params
   q <- .do_omit_query_params(q)
+
+  if (q$query_type == "list")
+    q$params <- list(q$params)
 
   tryCatch({
     res <- httr::PUT(url = .make_url(q$base_url, endpoint = q$endpoint), ...,
