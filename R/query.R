@@ -4,16 +4,18 @@
 #' @param base_url ...
 #' @param params ...
 #' @param subclass ...
+#' @param query_type ...
 #'
 #' @return a class ...
 #'
 #' @export
-RLCCSQuery <- function(base_url, params = list(), subclass) {
+RLCCSQuery <- function(base_url, params = list(), subclass, query_type = "key") {
 
   structure(
     list(base_url = base_url,
          endpoint = NULL,
          params = params,
+         query_type = query_type,
          verb = "GET",
          encode = NULL),
     class = c(subclass, "RLCCSQuery"))

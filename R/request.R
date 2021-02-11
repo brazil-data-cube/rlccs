@@ -88,6 +88,9 @@ post_request <- function(q, ..., encode = c("json", "multipart", "form")) {
   # process omitted params
   q <- .do_omit_query_params(q)
 
+  if (q$query_type == "list")
+    q$params <- list(q$params)
+
   tryCatch({
     res <- httr::POST(url = .make_url(q$base_url, endpoint = q$endpoint), ...,
                       body = q$params, encode = q$encode)
