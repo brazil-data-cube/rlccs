@@ -1,10 +1,14 @@
 RLCCSDocument <- function(content, q, subclass) {
 
-  structure(
-    content,
-    query = q,
-    class = c(subclass, "RLCCSDocument", "list")
-  )
+  # DELETE operations do not return contents in the LCCS-WS
+  if (!is.null(content))
+    return(structure(
+      content,
+      query = q,
+      class = c(subclass, "RLCCSDocument", "list")
+    ))
+
+  NULL
 }
 
 #' @export

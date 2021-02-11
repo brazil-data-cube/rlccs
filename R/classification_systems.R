@@ -19,7 +19,7 @@ classification_systems <- function(q, system_id = NULL, params_list = list()) {
   if (!is.null(system_id)) {
 
     if (length(system_id) != 1)
-      .error("Parameter `collection_id` must be a single value.")
+      .error("Parameter `system_id` must be a single value.")
 
     params[["system_id"]] <- system_id
 
@@ -70,7 +70,7 @@ before_request.classification_systems_id <- function(q) {
 
 #' @export
 after_response.classification_systems_id <- function(q, res) {
-  content <- content_response(res, c("200", "400", "404", "500"),
+  content <- content_response(res, c("200", "204" ,"400", "404", "500"),
                               "application/json")
 
   RLCCSDocument(content = content, q = q, subclass = "ClassificationSystem")
