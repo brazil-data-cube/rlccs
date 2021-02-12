@@ -11,10 +11,11 @@ lccs <- function(url = NULL, token = NULL) {
 
   # ...
   if (is.null(url))
-    .error("...")
+    .error("LCCS-WS URL Service is required!")
 
   RLCCSQuery(base_url = url,
              params = list(),
+             token = token,
              subclass = "lccs")
 
 }

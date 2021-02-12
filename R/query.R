@@ -12,6 +12,7 @@
 #' @export
 RLCCSQuery <- function(base_url,
                        params = list(),
+                       token = NULL,
                        subclass,
                        query_type = "key",
                        encode = NULL) {
@@ -20,6 +21,7 @@ RLCCSQuery <- function(base_url,
     list(base_url = base_url,
          endpoint = NULL,
          params = params,
+         token = token,
          query_type = query_type,
          verb = "GET",
          encode = encode),

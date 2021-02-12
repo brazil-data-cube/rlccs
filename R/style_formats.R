@@ -31,6 +31,7 @@ style_formats <- function(q, style_format_id = NULL, params_list = list()) {
   params <- utils::modifyList(params, params_list)
   RLCCSQuery(base_url = q$base_url,
              params = utils::modifyList(q$params, params),
+             token = q$token,
              subclass = subclass)
 }
 

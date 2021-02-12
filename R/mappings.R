@@ -33,6 +33,7 @@ mappings <- function(q,
   RLCCSQuery(base_url = q$base_url,
              params = utils::modifyList(q$params, params),
              subclass = subclass,
+             token = q$token,
              query_type = "list")
 }
 
