@@ -7,7 +7,7 @@
 #' @return a class ...
 #'
 #' @export
-lccs <- function(url = NULL, token = NULL) {
+lccs <- function(url = NULL, .token = NULL) {
 
   # ...
   if (is.null(url))
@@ -15,7 +15,7 @@ lccs <- function(url = NULL, token = NULL) {
 
   RLCCSQuery(base_url = url,
              params = list(),
-             token = token,
+             token = .token,
              subclass = "lccs")
 
 }
