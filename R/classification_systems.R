@@ -30,6 +30,7 @@ classification_systems <- function(q, system_id = NULL, params_list = list()) {
 
 
   RLCCSQuery(base_url = q$base_url,
+             token = q$token,
              params = utils::modifyList(q$params, params),
              subclass = subclass)
 }

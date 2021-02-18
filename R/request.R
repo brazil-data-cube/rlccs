@@ -45,7 +45,8 @@ get_request <- function(q, ...) {
   tryCatch({
     res <- httr::GET(url = .make_url(q$base_url,
                                      endpoint = q$endpoint,
-                                     params = q$params), ...)
+                                     params = q$params), ...,
+                     config = httr::add_headers("x-api-key" = q$token))
   },
   error = function(e) {
 
@@ -95,7 +96,8 @@ post_request <- function(q, ..., encode = c("json", "multipart", "form")) {
 
   tryCatch({
     res <- httr::POST(url = .make_url(q$base_url, endpoint = q$endpoint), ...,
-                      body = q$params, encode = q$encode)
+                      body = q$params, encode = q$encode,
+                      config = httr::add_headers("x-api-key" = q$token))
   },
   error = function(e) {
     .error("Request error. %s", e$message)
@@ -139,12 +141,16 @@ put_request <- function(q, ..., encode = c("json", "multipart", "form")) {
   # process omitted params
   q <- .do_omit_query_params(q)
 
+  # add token
+  q <- if (!is.null(q$token)) q$url + paste(q$url, "?=", q$token)
+
   if (q$query_type == "list")
     q$params <- list(q$params)
 
   tryCatch({
     res <- httr::PUT(url = .make_url(q$base_url, endpoint = q$endpoint), ...,
-                      body = q$params, encode = q$encode)
+                     body = q$params, encode = q$encode,
+                     config = httr::add_headers("x-api-key" = q$token))
   },
   error = function(e) {
     .error("Request error. %s", e$message)
@@ -179,10 +185,14 @@ delete_request <- function(q, ...) {
   # process omitted params
   q <- .do_omit_query_params(q)
 
+  # add token
+  q <- if (!is.null(q$token)) q$url + paste(q$url, "?=", q$token)
+
   tryCatch({
     res <- httr::DELETE(url = .make_url(q$base_url,
-                                     endpoint = q$endpoint,
-                                     params = q$params), ...)
+                                        endpoint = q$endpoint,
+                                        params = q$params), ...,
+                        config = httr::add_headers("x-api-key" = q$token))
   },
   error = function(e) {
 
