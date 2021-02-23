@@ -32,7 +32,7 @@ A \code{RLCCSQuery} object with the subclass \code{classes} for
 }
 \description{
 The \code{classes} implements operations to access and manipulate LCCS-WS
-Classes of Classification Systems endpoints (LCCS-WS-SPEC 0.6.0-0)
+Classes of Classification Systems endpoints (LCCS-WS-SPEC 0.6)
 }
 \examples{
 \donttest{

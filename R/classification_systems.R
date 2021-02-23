@@ -4,7 +4,7 @@
 #'
 #' @description
 #' The \code{classification_system} implements operations to access and
-#' manipulate LCCS-WS Classification Systems endpoints (LCCS-WS-SPEC 0.6.0-0)
+#' manipulate LCCS-WS Classification Systems endpoints (LCCS-WS-SPEC 0.6)
 #'
 #' @param q a \code{RLCCSQuery} object expressing a LCCS query
 #' criteria.

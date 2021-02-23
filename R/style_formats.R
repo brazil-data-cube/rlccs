@@ -4,7 +4,7 @@
 #'
 #' @description
 #' The \code{style_formats} implements operations to access and manipulate LCCS-WS
-#' Style Formats endpoints (LCCS-WS-SPEC 0.6.0-0)
+#' Style Formats endpoints (LCCS-WS-SPEC 0.6)
 #'
 #' @param q a \code{RLCCSQuery} object expressing a LCCS query
 #' criteria.

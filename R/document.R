@@ -22,7 +22,7 @@
 #' @export
 RLCCSDocument <- function(content, q, subclass) {
 
-  # DELETE operations do not return contents in the LCCS-WS (v0.6.0-0)
+  # DELETE operations do not return contents in the LCCS-WS (0.6.0)
   if (!is.null(content))
     return(structure(
       content,
