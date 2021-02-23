@@ -70,7 +70,7 @@ criteria or any \code{RLCCSDocument}.}
 \item{names}{a \code{character} vector with the names do omit.}
 
 \item{base_url}{a \code{character} informing the base url of a
-LCCS-WS (LCCS-WS-SPEC 0.6.0-0)}
+LCCS-WS (LCCS-WS-SPEC 0.6)}
 
 \item{params}{a named \code{list} with all URL query parameters to be
 appended in the URL.}

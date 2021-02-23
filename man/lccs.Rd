@@ -8,7 +8,7 @@ lccs(url = NULL, .token = NULL)
 }
 \arguments{
 \item{url}{a \code{character} informing the base url of a
-LCCS-WS (LCCS-WS-SPEC 0.6.0-0)}
+LCCS-WS (LCCS-WS-SPEC 0.6)}
 
 \item{.token}{a \code{character} informing the authentication token in the
 BDC-OAuth service. This token is used for the service's administrative

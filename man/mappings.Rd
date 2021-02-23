@@ -43,7 +43,7 @@ A \code{RLCCSQuery} object with the subclass \code{mappings_id_source} for
 }
 \description{
 The \code{mappings} implements operations to access and manipulate LCCS-WS
-mappings of Classification Systems endpoints (LCCS-WS-SPEC 0.6.0-0)
+mappings of Classification Systems endpoints (LCCS-WS-SPEC 0.6)
 }
 \examples{
 \donttest{
