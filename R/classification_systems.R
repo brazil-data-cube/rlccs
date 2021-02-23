@@ -1,12 +1,50 @@
-#' @title ...
-#' @description ...
+#' @title Endpoint functions
 #'
-#' @param q ...
-#' @param system_id ...
-#' @param params_list ...
+#' @rdname classification_system
 #'
-#' @return ...
+#' @description
+#' The \code{classification_system} implements operations to access and
+#' manipulate LCCS-WS Classification Systems endpoints (LCCS-WS-SPEC 0.6.0-0)
 #'
+#' @param q a \code{RLCCSQuery} object expressing a LCCS query
+#' criteria.
+#'
+#' @param system_id a optional \code{character} system_id used to get information
+#' about a specific Classification System
+#' @seealso
+#' \code{\link{get_request}}, \code{\link{post_request}},
+#'  \code{\link{put_request}}, \code{\link{delete_request}}
+#'
+#' @param params_list HTTP Body Parameter List. The elements entered
+#'  in this list may vary depending on the method being used. See the
+#'  specification for the usage details for each of the operations.
+#'  (https://github.com/brazil-data-cube/lccs-ws-spec).
+#'
+#' @return
+#' A \code{RLCCSQuery} object with the subclass \code{classification_system} for
+#'  \code{/classification_system/} endpoint with information about registered
+#'  Classification Systems or about a new Classification System inserted. The
+#'  \code{RLCCSQuery} also can be represent as a subclass
+#'  \code{classification_systems_id} for \code{/classification_system/system_id} for
+#'  information or operations about a specific Classification System.
+#'
+#'  These operations' results are all represented in JSON
+#'  format, with the content varying according to the HTTP method
+#'  that was performed. For the retrieval, addition, or update of classes
+#'  linked to a Classification System, the result summarizes what was
+#'  retrieved/added. In the case of deletions, only the confirmation
+#'  of the operation is presented.
+#'
+#' @examples
+#' \donttest{
+#' lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") %>%
+#'   classification_systems() %>%
+#'   get_request()
+#'
+#' lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") %>%
+#'   classification_systems(system_id = 2) %>%
+#'   get_request()
+#' }
 #' @export
 classification_systems <- function(q, system_id = NULL, params_list = list()) {
 

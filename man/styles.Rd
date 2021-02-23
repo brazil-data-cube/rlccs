@@ -2,20 +2,56 @@
 % Please edit documentation in R/styles.R
 \name{styles}
 \alias{styles}
-\title{...}
+\title{Endpoint functions}
 \usage{
 styles(q, style_id = NULL, style_file = NULL, params_list = list())
 }
 \arguments{
-\item{q}{...}
+\item{q}{a \code{RLCCSQuery} object expressing a LCCS query
+criteria.}
 
-\item{params_list}{...}
+\item{style_id}{A \code{integer} containing the ID of the Style.
+This parameter is optional. When it is not set, the list of all registered
+Styles is retrieved (the add operation must be done without this parameter).
+On the other hand, its setting causes the retrieval and management operations
+to be done for a particular Style.}
 
-\item{system_id}{...}
+\item{style_file}{A \code{character} containing the Style file that will be
+registered and sent to the server in a registration or style update operation
+of a rating system.}
+
+\item{params_list}{HTTP Body Parameter List. The elements entered
+in this list may vary depending on the method being used. See the
+specification for the usage details for each of the operations.
+(https://github.com/brazil-data-cube/lccs-ws-spec)}
 }
 \value{
-...
+A \code{RLCCSQuery} object with the subclass \code{styles} for
+ \code{/classifiaction_systems/system_id/styles} endpoint, or
+ a \code{styles_id} subclass for
+ \code{/classifiaction_systems/system_id/styles/style_format_id} endpoint.
+ When the style ID is passed next to a file, the operation to be performed is
+ an update or add. In this case, the return will be the \code{styles_id_file}
+ subclass.
 }
 \description{
-...
+The \code{styles} implements operations to access and manipulate LCCS-WS
+Styles endpoints (LCCS-WS-SPEC 0.6.0-0)
+}
+\examples{
+\donttest{
+lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") \%>\%
+  classification_systems(system_id = 1) \%>\%
+  styles() \%>\%
+  get_request()
+
+lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") \%>\%
+  classification_systems(system_id = 1) \%>\%
+  styles(style_id = 3) \%>\%
+  get_request()
+}
+}
+\seealso{
+\code{\link{get_request}}, \code{\link{post_request}},
+ \code{\link{put_request}}, \code{\link{delete_request}}
 }

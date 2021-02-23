@@ -2,18 +2,23 @@
 #'
 #' @rdname request
 #'
-#' @description The \code{get_request} ...
+#' @description The \code{get_request} is used to express HTTP-GET verb in LCCS-WS
+#' endpoints
 #'
-#' The \code{post_request} ...
+#' The \code{post_request} is used to express HTTP-POST verb in LCCS-WS
+#' endpoints. This require a BDC-OAuth token
 #'
-#' The \code{put_request} ...
+#' The \code{put_request} is used to express HTTP-PUT verb in LCCS-WS
+#' endpoints. This require a BDC-OAuth token
 #'
-#' The \code{delete_request} ...
+#' The \code{delete_request} is used to express HTTP-DELETE verb in LCCS-WS
+#' endpoints. This require a BDC-OAuth token
 #'
 #' @param q         a \code{RLCCSQuery} object expressing a LCCS query
 #' criteria.
 #'
-#' @param ... ...
+#' @param ... extra parameters to be used in \code{httr} HTTP verbs functions
+#' (GET, POST, PUT, DELETE)
 #'
 #' @param encode    a \code{character} informing the request body
 #' Content-Type. Accepted types are \code{'json'} (\code{'application/json'}),
@@ -21,7 +26,9 @@
 #' and \code{'multipart'} (\code{'multipart/form-data'}). Defaults to
 #' \code{'json'}.
 #'
-#' @return ...
+#' @return
+#' Returns an \code{RLCCSDocument} The contents of the class may vary depending
+#' on the operation being
 #'
 #' @export
 get_request <- function(q, ...) {

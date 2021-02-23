@@ -19,7 +19,8 @@ delete_request(q, ...)
 \item{q}{a \code{RLCCSQuery} object expressing a LCCS query
 criteria.}
 
-\item{...}{...}
+\item{...}{extra parameters to be used in \code{httr} HTTP verbs functions
+(GET, POST, PUT, DELETE)}
 
 \item{encode}{a \code{character} informing the request body
 Content-Type. Accepted types are \code{'json'} (\code{'application/json'}),
@@ -28,14 +29,19 @@ and \code{'multipart'} (\code{'multipart/form-data'}). Defaults to
 \code{'json'}.}
 }
 \value{
-...
+Returns an \code{RLCCSDocument} The contents of the class may vary depending
+on the operation being
 }
 \description{
-The \code{get_request} ...
+The \code{get_request} is used to express HTTP-GET verb in LCCS-WS
+endpoints
 
-The \code{post_request} ...
+The \code{post_request} is used to express HTTP-POST verb in LCCS-WS
+endpoints. This require a BDC-OAuth token
 
-The \code{put_request} ...
+The \code{put_request} is used to express HTTP-PUT verb in LCCS-WS
+endpoints. This require a BDC-OAuth token
 
-The \code{delete_request} ...
+The \code{delete_request} is used to express HTTP-DELETE verb in LCCS-WS
+endpoints. This require a BDC-OAuth token
 }

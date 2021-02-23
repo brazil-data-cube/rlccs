@@ -1,7 +1,5 @@
 #' @title Extension development functions
 #'
-#' @description ...
-#'
 #' @param q       a \code{RLCCSQuery} object expressing a LCCS query
 #' criteria.
 #'
@@ -11,7 +9,6 @@
 #' A \code{character} endpoint value for \code{endpoint()} function.
 #' A \code{RLCCSQuery} object for \code{before_request()} and
 #' \code{after_response()} functions.
-#'
 #'
 #' @name extensions
 NULL
