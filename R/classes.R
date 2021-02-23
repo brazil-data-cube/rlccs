@@ -1,12 +1,44 @@
-#' @title ...
-#' @description ...
+#' @title Endpoint functions
 #'
-#' @param q ...
-#' @param system_id ...
-#' @param params_list ...
+#' @rdname classes
 #'
-#' @return ...
+#' @description
+#' The \code{classes} implements operations to access and manipulate LCCS-WS
+#' Classes of Classification Systems endpoints (LCCS-WS-SPEC 0.6.0-0)
 #'
+#' @param q a \code{RLCCSQuery} object expressing a LCCS query
+#' criteria.
+#'
+#' @param class_id a \code{character} class id to be retrieved from a
+#' Classification System
+#' @seealso
+#' \code{\link{get_request}}, \code{\link{post_request}},
+#'  \code{\link{put_request}}, \code{\link{delete_request}}
+#'
+#' @param params_list HTTP Body Parameter List. The elements entered
+#'  in this list may vary depending on the method being used. See the
+#'  specification for the usage details for each of the operations.
+#'  (https://github.com/brazil-data-cube/lccs-ws-spec)
+#'
+#' @return
+#' A \code{RLCCSQuery} object with the subclass \code{classes} for
+#'  \code{/classification_system/system_id/classes/} endpoint, containing
+#'  operations results.
+#'
+#'  These operations' results are all represented in JSON
+#'  format, with the content varying according to the HTTP method
+#'  that was performed. For the retrieval, addition, or update of classes
+#'  linked to a Classification System, the result summarizes what was
+#'  retrieved/added. In the case of deletions, only the confirmation
+#'  of the operation is presented.
+#'
+#' @examples
+#' \donttest{
+#' lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") %>%
+#'   classification_systems(system_id = 2) %>%
+#'   classes() %>%
+#'   get_request()
+#' }
 #' @export
 classes <- function(q, class_id = NULL, params_list = list()) {
 

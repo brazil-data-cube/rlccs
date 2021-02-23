@@ -2,20 +2,67 @@
 % Please edit documentation in R/style_formats.R
 \name{style_formats}
 \alias{style_formats}
-\title{...}
+\title{Endpoint functions}
 \usage{
 style_formats(q, style_format_id = NULL, params_list = list())
 }
 \arguments{
-\item{q}{...}
+\item{q}{a \code{RLCCSQuery} object expressing a LCCS query
+criteria.}
 
-\item{style_format_id}{...}
+\item{style_format_id}{A \code{integer} containing the ID of the Style Format.
+This parameter is optional. When it is not set, the list of all registered
+Style Formats is retrieved (the add operation must be done without this parameter).
+On the other hand, its setting causes the retrieval and management operations
+to be done for a particular Style Format.}
 
-\item{params_list}{...}
+\item{params_list}{HTTP Body Parameter List. The elements entered
+in this list may vary depending on the method being used. See the
+specification for the usage details for each of the operations.
+(https://github.com/brazil-data-cube/lccs-ws-spec)}
 }
 \value{
-...
+A \code{RLCCSQuery} object with the subclass \code{style_formats} for
+ \code{/style_formats/} endpoint, or
+ a \code{style_formats_id} subclass for
+ \code{/style_formats/style_format_id/} endpoint containing
+ operations results.
+
+ These operations' results are all represented in JSON
+ format, with the content varying according to the HTTP method
+ that was performed. For the retrieval, addition, or update of classes
+ linked to a Classification System, the result summarizes what was
+ retrieved/added. In the case of deletions, only the confirmation
+ of the operation is presented.
+
+ All classification systems in LCCS are linked to a Style Format. This allow
+ the use of \code{classification_system_id class} subclass object to this
+ endpoint and retrieve the Style Format related information for a specific
+ Classification System. This use returns subclass
+ \code{style_formats_classification} to
+ \code{/classification_systems/system_id/style_formats/} endpoint.
 }
 \description{
-...
+The \code{style_formats} implements operations to access and manipulate LCCS-WS
+Style Formats endpoints (LCCS-WS-SPEC 0.6.0-0)
+}
+\examples{
+\donttest{
+lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") \%>\%
+  style_formats() \%>\%
+  get_request()
+
+lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") \%>\%
+  style_formats(style_format_id = 3) \%>\%
+  get_request()
+
+lccs("https://brazildatacube.dpi.inpe.br/dev/lccs/") \%>\%
+  classification_systems(system_id = 1) \%>\%
+  style_formats() \%>\%
+  get_request()
+}
+}
+\seealso{
+\code{\link{get_request}}, \code{\link{post_request}},
+ \code{\link{put_request}}, \code{\link{delete_request}}
 }
